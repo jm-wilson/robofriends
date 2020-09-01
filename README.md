@@ -1,3 +1,10 @@
+# robofriends
+A React app that displays a searchable list of robotic friends
+
+Demo: https://jm-wilson.github.io/robofriends/
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
