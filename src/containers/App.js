@@ -1,35 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CardList from '../components/CardList.js';
 import SearchBox from '../components/SearchBox.js';
 import Scroll from '../components/Scroll.js';
 import ErrorBoundry from '../components/ErrorBoundry.js';
 import './App.css';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { incrementClickme, requestRobots, filterRobots, setSearchField } from '../actions.js';
+
 const App = () => {
-  const [robots, setRobots] = useState([]);
-  const [searchfield, setSearchfield] = useState('');
-  const [count, setCount] = useState(0);
+  const counter = useSelector((state) => state.clickMe.counter);
+  const searchField = useSelector((state) => state.searchRobots.searchField);
+  const robots = useSelector((state) => state.requestRobots.robots);
+  const filteredRobots = useSelector((state) => state.filterRobots.robots);
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((users) => setRobots(users));
-
-    console.log(count);
-  }, [count]);
+  const dispatch = useDispatch();
 
   const onSearchChange = (event) => {
-    setSearchfield(event.target.value);
+    dispatch(setSearchField(event.target.value));
+    dispatch(filterRobots(event.target.value, robots));
   };
 
-  const filteredRobots = robots.filter((robot) => {
-    return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-  });
+  const onClickMe = () => {
+    dispatch(incrementClickme(counter));
+  };
+
+  if (!robots.length) {
+    requestRobots(dispatch);
+  }
+
+  if (robots.length && !filteredRobots.length && !searchField.length) {
+    dispatch(filterRobots('', robots));
+  }
 
   return (
     <div className='tc'>
       <h1 className='f1'>RoboFriends</h1>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={onClickMe}>Click me ({counter})</button>
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
         <ErrorBoundry>
