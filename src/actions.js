@@ -16,7 +16,10 @@ export const requestRobots = (dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
-    .then((data) => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
+    .then((data) => {
+      dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data });
+      dispatch({ type: FILTER_ROBOTS, payload: data });
+    })
     .catch((error) => dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error }));
 };
 
