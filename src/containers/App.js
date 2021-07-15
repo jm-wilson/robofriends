@@ -10,7 +10,6 @@ import { incrementClickme, requestRobots, filterRobots, setSearchField } from '.
 
 const App = () => {
   const counter = useSelector((state) => state.clickMe.counter);
-  const searchField = useSelector((state) => state.searchRobots.searchField);
   const robots = useSelector((state) => state.requestRobots.robots);
   const filteredRobots = useSelector((state) => state.filterRobots.robots);
 
