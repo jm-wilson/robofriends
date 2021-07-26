@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should say "Click me (0)" when counter is 0 1`] = `
+<button
+  id="btn-counter"
+  onClick={[Function]}
+>
+  Click me (
+  0
+  )
+</button>
+`;
+
+exports[`should say "Click me (5)" when counter is 5 1`] = `
+<button
+  id="btn-counter"
+  onClick={[Function]}
+>
+  Click me (
+  5
+  )
+</button>
+`;

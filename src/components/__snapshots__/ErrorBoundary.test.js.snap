@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should safely catch an error 1`] = `
+<h1>
+  Oooops. That is not good
+</h1>
+`;
+
+exports[`should should render Scroll component 1`] = `
+<CardList
+  robots={
+    Array [
+      Object {
+        "email": "john@gmail.com",
+        "id": 1,
+        "name": "John Snow",
+      },
+    ]
+  }
+/>
+`;

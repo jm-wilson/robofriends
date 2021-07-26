@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render App component 1`] = `
+<div
+  className="tc"
+>
+  <h1
+    className="f1"
+  >
+    RoboFriends
+  </h1>
+  <CounterButton />
+  <SearchBox
+    searchChange={[Function]}
+  />
+  <Scroll>
+    <ErrorBoundry>
+      <CardList />
+    </ErrorBoundry>
+  </Scroll>
+</div>
+`;

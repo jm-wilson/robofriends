@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should should render Scroll component 1`] = `
+<div
+  style={
+    Object {
+      "border": "3px solid black",
+      "height": "800px",
+      "overflowY": "scroll",
+    }
+  }
+>
+  <ErrorBoundry>
+    <CardList
+      robots={
+        Array [
+          Object {
+            "email": "john@gmail.com",
+            "id": 1,
+            "name": "John Snow",
+          },
+        ]
+      }
+    />
+  </ErrorBoundry>
+</div>
+`;
