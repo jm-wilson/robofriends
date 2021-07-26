@@ -10,7 +10,11 @@ const CounterButton = () => {
     dispatch(incrementClickme(counter));
   };
 
-  return <button onClick={onClickMe}>Click me ({counter})</button>;
+  return (
+    <button id='btn-counter' onClick={onClickMe}>
+      Click me ({counter})
+    </button>
+  );
 };
 
 export default CounterButton;

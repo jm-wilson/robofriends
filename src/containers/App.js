@@ -3,7 +3,7 @@ import CardList from '../components/CardList.js';
 import CounterButton from '../components/CounterButton.js';
 import SearchBox from '../components/SearchBox.js';
 import Scroll from '../components/Scroll.js';
-import ErrorBoundry from '../components/ErrorBoundry.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 import './App.css';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,7 +21,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    requestRobots(dispatch);
+    dispatch(requestRobots());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -30,9 +31,9 @@ const App = () => {
       <CounterButton />
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
-        <ErrorBoundry>
+        <ErrorBoundary>
           <CardList robots={filteredRobots} />
-        </ErrorBoundry>
+        </ErrorBoundary>
       </Scroll>
     </div>
   );
