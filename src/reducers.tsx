@@ -5,13 +5,22 @@ import {
   REQUEST_ROBOTS_FAILED,
   FILTER_ROBOTS,
   CHANGE_CLICKME_COUNTER,
-} from './constants.js';
+} from './constants';
+import { Reducer } from 'react';
+import {
+  ActionWithNumberPayload,
+  ActionWithObjectPayload,
+  ActionWithStringPayload,
+} from './actions';
 
 const initialStateSearch = {
   searchField: '',
 };
 
-export const searchRobots = (state = initialStateSearch, action = {}) => {
+export const searchRobots: Reducer<object, ActionWithStringPayload> = (
+  state = initialStateSearch,
+  action = {},
+) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return { ...state, searchField: action.payload };
@@ -26,7 +35,10 @@ const initialStateRobots = {
   error: '',
 };
 
-export const requestRobots = (state = initialStateRobots, action = {}) => {
+export const requestRobots: Reducer<object, ActionWithObjectPayload> = (
+  state = initialStateRobots,
+  action = {},
+) => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return { ...state, isPending: true };
@@ -39,7 +51,10 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
   }
 };
 
-export const filterRobots = (state = initialStateRobots, action = {}) => {
+export const filterRobots: Reducer<object, ActionWithObjectPayload> = (
+  state = initialStateRobots,
+  action = {},
+) => {
   switch (action.type) {
     case FILTER_ROBOTS:
       return { ...state, robots: action.payload };
@@ -52,7 +67,10 @@ const initialStateClickme = {
   counter: 0,
 };
 
-export const clickMe = (state = initialStateClickme, action = {}) => {
+export const clickMe: Reducer<object, ActionWithNumberPayload> = (
+  state = initialStateClickme,
+  action = {},
+) => {
   switch (action.type) {
     case CHANGE_CLICKME_COUNTER:
       return { ...state, counter: action.payload };

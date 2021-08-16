@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementClickme } from '../actions';
+import { IRootState } from '../containers/App';
 
-const CounterButton = () => {
+const CounterButton: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.clickMe.counter);
+  const counter: number = useSelector((state: IRootState) => state.clickMe.counter);
 
   const onClickMe = () => {
     dispatch(incrementClickme(counter));

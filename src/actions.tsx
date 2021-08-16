@@ -5,16 +5,31 @@ import {
   REQUEST_ROBOTS_FAILED,
   FILTER_ROBOTS,
   CHANGE_CLICKME_COUNTER,
-} from './constants.js';
+} from './constants';
+import { IRobot } from './containers/App';
+import { Dispatch } from 'redux';
 
-export const setSearchField = (text) => ({
+export interface ActionWithStringPayload {
+  type?: string;
+  payload?: string;
+}
+export interface ActionWithObjectPayload {
+  type?: string;
+  payload?: object;
+}
+export interface ActionWithNumberPayload {
+  type?: string;
+  payload?: number;
+}
+
+export const setSearchField = (text: string): ActionWithStringPayload => ({
   type: CHANGE_SEARCH_FIELD,
   payload: text,
 });
 
 export const requestRobots =
-  (apiLink = 'https://jsonplaceholder.typicode.com/users') =>
-  async (dispatch) => {
+  (apiLink: string = 'https://jsonplaceholder.typicode.com/users') =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch({ type: REQUEST_ROBOTS_PENDING });
       const data = await fetch(apiLink).then((response) => response.json());
@@ -25,7 +40,7 @@ export const requestRobots =
     }
   };
 
-export const filterRobots = (text, robots) => {
+export const filterRobots = (text: string, robots: IRobot[]): ActionWithObjectPayload => {
   const payload = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(text.toLowerCase());
   });
@@ -36,7 +51,7 @@ export const filterRobots = (text, robots) => {
   };
 };
 
-export const incrementClickme = (counter) => ({
+export const incrementClickme = (counter: number): ActionWithNumberPayload => ({
   type: CHANGE_CLICKME_COUNTER,
   payload: counter + 1,
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './containers/App.js';
+import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import { Provider } from 'react-redux';
@@ -19,7 +19,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root') as HTMLElement,
 );
 
 // If you want your app to work offline and load faster, you can change
