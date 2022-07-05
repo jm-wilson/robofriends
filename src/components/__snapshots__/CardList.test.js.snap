@@ -11,4 +11,4 @@ exports[`should render CardList component 1`] = `
 </div>
 `;
 
-exports[`should render an empty CardList component 1`] = `<div />`;
+exports[`should render empty CardList component 1`] = `<div />`;
